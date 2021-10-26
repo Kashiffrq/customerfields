@@ -1,0 +1,22 @@
+{
+    "name": "kashiffrq/customerfields",
+    "description": "Kashiffrq CustomerFields",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "kashif",
+            "email": "kashiffrq@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Kashiffrq\\CustomerFields\\": ""
+        }
+    }
+}

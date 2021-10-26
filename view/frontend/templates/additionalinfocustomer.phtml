@@ -1,0 +1,96 @@
+<fieldset class="fieldset create account" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
+    <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Additional Information') ?></span></legend>
+    <p>
+    <div class="field regulation required">
+        <label for="regulation" class="label"><span><?php /* @escapeNotVerified */
+                echo __('Company Name') ?></span></label>
+        <div class="control">
+            <input type="text" name="company_information" id="company_information" title="<?php /* @escapeNotVerified */ echo __('Company Name') ?>" class="input-text" data-validate="{required:true}" value="">
+        </div>
+    </div>
+    <div class="field avatar required">
+    <label for="avatar"
+     class="label"><span><?= __('Trade License') ?></span></label>
+     <div class="control">
+        <input type="file" id="trade_license" name="trade_license" class="input-file" accept=".jpg, .jpeg, .png, .pdf" data-validate="{required:true, 'validate-filesize':true, 'validate-fileextensions':true}"/>
+        <div class="file-uploader-preview">
+            <a class="preview-link preview-image" target="_blank">
+                <img id="img-avatar" alt="<?= __('Trade License') ?>" class="mgz-cusrattr-image-preview">
+            </a>
+        </div>
+    </div>
+</div>
+    </p>
+</fieldset>
+<script type="text/javascript">
+    require([
+        'jquery', 'jquery/ui', 'jquery/validate', 'mage/translate', 'mage/mage'
+        ], function($) {
+            $.validator.addMethod(
+            'validate-filesize', function (v, elm) {
+                var maxSize = 5 * 102400;
+                if (navigator.appName == "Microsoft Internet Explorer") {
+                    if (elm.value) {
+                        var oas = new ActiveXObject("Scripting.FileSystemObject");
+                        var e = oas.getFile(elm.value);
+                        var size = e.size;
+                    }
+                } else {
+                    if (elm.files[0] != undefined) {
+                        size = elm.files[0].size;
+                    }
+                }
+                if (size != undefined && size > maxSize) {
+                    return false;
+                }
+                return true;
+            }, $.mage.__('The file size should not exceed 5MB'));
+
+            //Validate Image Extensions
+
+            $.validator.addMethod(
+            'validate-fileextensions', function (v, elm) {
+
+                var extensions = ['jpeg', 'jpg', 'png', 'pdf'];
+                if (!v) {
+                    return true;
+                }
+                with (elm) {
+                    var ext = value.substring(value.lastIndexOf('.') + 1);
+                    for (i = 0; i < extensions.length; i++) {
+                        if (ext == extensions[i]) {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }, $.mage.__('Disallowed file type.'));
+
+        $('#trade_license').on('change', function() {
+            if (this.files && this.files[0]) {
+                 var fileExtension = ['jpeg', 'jpg', 'png'];
+                 console.log(this.files[0].name.split('.').pop());
+                 console.log(this.files[0].name.split('.').pop().toLowerCase());
+            if ($.inArray(this.files[0].name.split('.').pop().toLowerCase(), fileExtension) !== -1) {
+                var id = '#img-avatar';
+                    var img = document.querySelector(id);
+                    img.src = URL.createObjectURL(this.files[0]);
+                    img.href = URL.createObjectURL(this.files[0]);
+                    $('#img-avatar').attr('href', URL.createObjectURL(this.files[0]));
+                    img.alt = this.files[0].name;
+                    $(this).parent().children('.file-uploader-preview').addClass('mediaReview');
+            }else{
+                $(this).parent().children('.file-uploader-preview').removeClass('mediaReview')
+            }
+            }
+        });
+    })
+</script>
+<style>
+    .file-uploader-preview {
+      display: none !important;
+    }
+    .mediaReview {
+      display: block !important;
+    }
+</style>
