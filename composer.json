@@ -1,12 +1,12 @@
 {
-    "name": "kashiffrq/customerfields",
-    "description": "Kashiffrq CustomerFields",
+    "name": "Gulfprime/module-customerfields",
+    "description": "Gulf CustomerFields",
     "type": "magento2-module",
     "license": "proprietary",
     "authors": [
         {
-            "name": "kashif",
-            "email": "kashiffrq@gmail.com"
+            "name": "Gulfprime",
+            "email": "info@gulf_prime.com"
         }
     ],
     "minimum-stability": "dev",
@@ -16,7 +16,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "Kashiffrq\\CustomerFields\\": ""
+            "Gulfprime\\CustomerFields\\": ""
         }
     }
 }

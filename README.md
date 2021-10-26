@@ -1,6 +1,6 @@
-# Module Kashiffrq CustomerFields
+# Mage2 Module Gulf CustomerFields
 
-    ``kashiffrq/customerfields``
+    ``Gulfprime/module-customerfields``
 
  - [Main Functionalities](#markdown-header-main-functionalities)
  - [Installation](#markdown-header-installation)
@@ -10,15 +10,15 @@
 
 
 ## Main Functionalities
-Kashiffrq CustomerFields
+Gulfprime CustomerFields
 
 ## Installation
 \* = in production please use the `--keep-generated` option
 
 ### Type 1: Zip file
 
- - Unzip the zip file in `app/code/Kashiffrq`
- - Enable the module by running `php bin/magento module:enable Kashiffrq_CustomerFields`
+ - Unzip the zip file in `app/code/Gulfprime`
+ - Enable the module by running `php bin/magento module:enable Gulfprime_CustomerFields`
  - Apply database updates by running `php bin/magento setup:upgrade`\*
  - Flush the cache by running `php bin/magento cache:flush`
 
@@ -29,8 +29,8 @@ Kashiffrq CustomerFields
     - public repository `packagist.org`
     - public github repository as vcs
  - Add the composer repository to the configuration by running `composer config repositories.repo.magento.com composer https://repo.magento.com/`
- - Install the module composer by running `composer require kashiffrq/customerfields`
- - enable the module by running `php bin/magento module:enable Kashiffrq_CustomerFields`
+ - Install the module composer by running `composer require gulfprime/module-customerfields`
+ - enable the module by running `php bin/magento module:enable Gulfprime_CustomerFields`
  - apply database updates by running `php bin/magento setup:upgrade`\*
  - Flush the cache by running `php bin/magento cache:flush`
 

@@ -1,11 +1,11 @@
 <fieldset class="fieldset create account" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
-    <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Additional Information') ?></span></legend>
+    <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Business Information') ?></span></legend>
     <p>
     <div class="field regulation required">
         <label for="regulation" class="label"><span><?php /* @escapeNotVerified */
                 echo __('Company Name') ?></span></label>
         <div class="control">
-            <input type="text" name="company_information" id="company_information" title="<?php /* @escapeNotVerified */ echo __('Company Name') ?>" class="input-text" data-validate="{required:true}" value="">
+            <input type="text" name="company_information" id="company_information" title="<?php /* @escapeNotVerified */ echo __('Company Name (Legal Business Name)') ?>" class="input-text maximum-length-80" data-validate="{required:true, 'validate-length':true}" value="">
         </div>
     </div>
     <div class="field avatar required">
@@ -13,6 +13,7 @@
      class="label"><span><?= __('Trade License') ?></span></label>
      <div class="control">
         <input type="file" id="trade_license" name="trade_license" class="input-file" accept=".jpg, .jpeg, .png, .pdf" data-validate="{required:true, 'validate-filesize':true, 'validate-fileextensions':true}"/>
+        <br/><span>PDF or Image Files Only</span>
         <div class="file-uploader-preview">
             <a class="preview-link preview-image" target="_blank">
                 <img id="img-avatar" alt="<?= __('Trade License') ?>" class="mgz-cusrattr-image-preview">
@@ -26,9 +27,12 @@
     require([
         'jquery', 'jquery/ui', 'jquery/validate', 'mage/translate', 'mage/mage'
         ], function($) {
+            "use strict";
+
+        return function () {
             $.validator.addMethod(
             'validate-filesize', function (v, elm) {
-                var maxSize = 5 * 102400;
+                var maxSize = 5000000;
                 if (navigator.appName == "Microsoft Internet Explorer") {
                     if (elm.value) {
                         var oas = new ActiveXObject("Scripting.FileSystemObject");
@@ -56,7 +60,7 @@
                     return true;
                 }
                 with (elm) {
-                    var ext = value.substring(value.lastIndexOf('.') + 1);
+                    var ext = value.substring(value.lastIndexOf('.') + 1).toLowerCase();
                     for (i = 0; i < extensions.length; i++) {
                         if (ext == extensions[i]) {
                             return true;
@@ -65,12 +69,10 @@
                 }
                 return false;
             }, $.mage.__('Disallowed file type.'));
-
+        }
         $('#trade_license').on('change', function() {
             if (this.files && this.files[0]) {
                  var fileExtension = ['jpeg', 'jpg', 'png'];
-                 console.log(this.files[0].name.split('.').pop());
-                 console.log(this.files[0].name.split('.').pop().toLowerCase());
             if ($.inArray(this.files[0].name.split('.').pop().toLowerCase(), fileExtension) !== -1) {
                 var id = '#img-avatar';
                     var img = document.querySelector(id);
@@ -83,6 +85,9 @@
                 $(this).parent().children('.file-uploader-preview').removeClass('mediaReview')
             }
             }
+        });
+        $("form").bind("invalid-form.validate", function () {
+            $(this).find(':submit').prop('disabled', false);
         });
     })
 </script>

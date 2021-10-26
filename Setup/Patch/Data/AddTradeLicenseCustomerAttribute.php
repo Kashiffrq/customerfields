@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Kashiffrq\CustomerFields\Setup\Patch\Data;
+namespace Gulfprime\CustomerFields\Setup\Patch\Data;
 
 use Magento\Customer\Model\Customer;
 use Magento\Customer\Setup\CustomerSetup;
@@ -72,9 +72,9 @@ class AddTradeLicenseCustomerAttribute implements DataPatchInterface, PatchRever
                 'position' => 333,
                 'visible' => true,
                 'system' => false,
-                'is_used_in_grid' => true,
-                'is_visible_in_grid' => true,
-                'is_filterable_in_grid' => true,
+                'is_used_in_grid' => false,
+                'is_visible_in_grid' => false,
+                'is_filterable_in_grid' => false,
                 'is_searchable_in_grid' => false,
                 'backend' => ''
             ]

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Kashiffrq\CustomerFields\Setup\Patch\Data;
+namespace Gulfprime\CustomerFields\Setup\Patch\Data;
 
 use Magento\Customer\Model\Customer;
 use Magento\Customer\Setup\CustomerSetup;
