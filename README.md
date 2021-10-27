@@ -1,6 +1,6 @@
 # Mage2 Module Gulf CustomerFields
 
-    ``Gulfprime/module-customerfields``
+    ``Gulfprime/CustomerFields``
 
  - [Main Functionalities](#markdown-header-main-functionalities)
  - [Installation](#markdown-header-installation)
@@ -29,7 +29,7 @@ Gulfprime CustomerFields
     - public repository `packagist.org`
     - public github repository as vcs
  - Add the composer repository to the configuration by running `composer config repositories.repo.magento.com composer https://repo.magento.com/`
- - Install the module composer by running `composer require gulfprime/module-customerfields`
+ - Install the module composer by running `composer require Gulfprime/CustomerFields`
  - enable the module by running `php bin/magento module:enable Gulfprime_CustomerFields`
  - apply database updates by running `php bin/magento setup:upgrade`\*
  - Flush the cache by running `php bin/magento cache:flush`
