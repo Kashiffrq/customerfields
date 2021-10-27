@@ -1,4 +1,4 @@
-# Module Gulfprime CustomerFields
+# Mage2 Module Gulf CustomerFields
 
     ``Gulfprime/module-customerfields``
 
